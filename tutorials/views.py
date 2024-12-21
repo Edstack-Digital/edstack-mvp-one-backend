@@ -1,5 +1,9 @@
 from django.shortcuts import render
+from rest_framework.viewsets import ModelViewSet
+from .models import Course, Tutor
+from .serializers import CourseSerializer
 
 # Create your views here.
-# def tutorials(request):
-#     return render(request,'blog.html')
+class CourseViewSet(ModelViewSet):
+    queryset = Course.objects.all()
+    serializer_class = CourseSerializer
