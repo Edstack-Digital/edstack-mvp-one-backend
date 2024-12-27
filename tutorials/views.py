@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from rest_framework.viewsets import ModelViewSet
-from .models import Course, Tutor
+from .models import Course
 from .serializers import CourseSerializer
 
 # Create your views here.

@@ -18,17 +18,6 @@ class User(AbstractUser):
     def __str__(self):
         return self.email
 
-class Tutor(models.Model):
-    user = models.ForeignKey('User', on_delete=models.CASCADE)
-    courses = models.CharField(max_length=400)
-    badge = models.BooleanField()
-    rating = models.IntegerField()
-    phone = models.CharField(max_length=100)
-    image = models.URLField()
-
-    def __str__(self):
-        return self.user.email
-
 class Course(models.Model):
     title = models.CharField(max_length=400)
     url = models.URLField()
