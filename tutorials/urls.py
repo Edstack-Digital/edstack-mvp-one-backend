@@ -16,7 +16,11 @@ Including another URLconf
 """
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from .views import CourseViewSet
+from rest_framework_simplejwt.views import (
+    TokenRefreshView,
+    TokenBlacklistView,
+)
+from .views import SignupView, LoginView, CourseViewSet
 
 # from . import views
 #
@@ -29,3 +33,10 @@ router = DefaultRouter()
 router.register('Course', CourseViewSet)
 
 urlpatterns = router.urls
+
+urlpatterns += [
+    path('api/auth/signup/', SignupView.as_view(), name='signup'),
+    path('api/auth/login/', LoginView.as_view(), name='login'),
+    path('api/auth/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('api/auth/logout/', TokenBlacklistView.as_view(), name='token_blacklist')
+]

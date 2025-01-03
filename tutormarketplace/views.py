@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import JsonResponse
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.viewsets import ModelViewSet
 from .serializers import TutorSerializer
 from tutorials.models import User
@@ -24,3 +25,4 @@ def create_tutor(request):
 class TutorViewSet(ModelViewSet):
     queryset = Tutor.objects.all()
     serializer_class = TutorSerializer
+    permission_classes = [IsAuthenticated]
