@@ -16,9 +16,22 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework_simplejwt.views import (
+    TokenRefreshView,
+    TokenBlacklistView,
+)
+from tutorials.views import SignupView, LoginView, SecureView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/tutorials/', include('tutorials.urls')),
     path('api/tutormarketplace/', include('tutormarketplace.urls')),
+]
+
+urlpatterns += [
+    path('api/auth/signup/', SignupView.as_view(), name='signup'),
+    path('api/auth/login/', LoginView.as_view(), name='login'),
+    path('api/auth/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('api/auth/logout/', TokenBlacklistView.as_view(), name='token_blacklist'),
+    path('api/auth/secureview/', SecureView.as_view(), name='secure_view')   
 ]
