@@ -6,9 +6,9 @@ from .managers import CustomUserManager
 class User(AbstractUser):
     email = models.EmailField(unique=True)
     phone = models.CharField(max_length=100)
-    matric = models.CharField(max_length=100)
-    university = models.CharField(max_length=400)
-    level = models.IntegerField(null = True)
+    matric = models.CharField(max_length=100, blank= True)
+    university = models.CharField(max_length=400, blank = True)
+    level = models.IntegerField(null = True, blank = True)
 
     username = None
     USERNAME_FIELD = 'email'
