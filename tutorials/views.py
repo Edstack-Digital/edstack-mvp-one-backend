@@ -7,8 +7,22 @@ from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 from rest_framework_simplejwt.views import TokenObtainPairView
 
-from .models import User, Course
-from .serializers import CourseSerializer
+from .models import User, Course, Video
+from .serializers import CourseSerializer, VideoSerializer
+
+# from django.views.decorators.http import require_POST
+# from django.contrib import messages
+# from .automations import save_courses, save_videos
+
+# @require_POST
+# def save_courses_videos(request, queryset):
+#     # Perform the desired action
+#     doc="/workspaces/edstack-mvp-one-backend/tutorials/edstack-course-list.txt"
+#     save_courses(doc)
+#     save_videos(doc)
+
+#     messages.success(request, "The action was performed successfully.")
+
 
 # Create your views here.
 class SecureView(APIView):
@@ -57,3 +71,7 @@ class CourseViewSet(ModelViewSet):
     serializer_class = CourseSerializer
     permission_classes = [IsAuthenticated]
 
+class VideoViewSet(ModelViewSet):
+    queryset = Video.objects.all()
+    serializer_class = VideoSerializer
+    permission_classes = [IsAuthenticated]

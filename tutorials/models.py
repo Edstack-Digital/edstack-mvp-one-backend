@@ -25,4 +25,10 @@ class Course(models.Model):
     def __str__(self):
         return self.title
 
+class Video(models.Model):
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='course')
+    title = models.CharField(max_length=400)
+    url = models.URLField()
 
+    def __str__(self):
+        return self.title    

@@ -16,9 +16,9 @@ Including another URLconf
 """
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from .views import CourseViewSet
+from .views import CourseViewSet, VideoViewSet
 
-# from . import views
+from . import views
 #
 # urlpatterns = [
 #     path('', views.tutorials , name='tutorials'),
@@ -27,5 +27,6 @@ from .views import CourseViewSet
 
 router = DefaultRouter()
 router.register('Course', CourseViewSet)
+router.register('Video', VideoViewSet)
 
 urlpatterns = router.urls
