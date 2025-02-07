@@ -4,5 +4,5 @@ from .models import Tutor
 # Register your models here.
 @admin.register(Tutor)
 class TutorAdmin(admin.ModelAdmin):
-    list_display = ('user', 'courses','badge','rating','image')
-    search_fields = ('user__email', 'courses')
+    list_display = ('first_name', 'last_name', 'email', 'courses','badge','rating','image')
+    search_fields = ('first_name', 'last_name', 'email', 'courses')
