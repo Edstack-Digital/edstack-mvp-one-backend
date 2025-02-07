@@ -8,6 +8,7 @@ from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+from rest_framework_simplejwt.tokens import RefreshToken
 
 from .models import Course, Video
 from .serializers import UserSerializer, CourseSerializer, VideoSerializer
@@ -60,8 +61,15 @@ class SignupView(APIView):
         serializer = UserSerializer(data=request.data)
         if serializer.is_valid():
             user = serializer.save()
+            refresh=RefreshToken.for_user(user)
+            access_token=str(refresh.access_token)
+
             if user:
-                json = serializer.data
+                json = {
+                    "access": access_token,
+                    "refresh": str(refresh),
+                    "user":serializer.data
+                }
                 return Response(json, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         
