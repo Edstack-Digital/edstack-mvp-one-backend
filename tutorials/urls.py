@@ -25,7 +25,7 @@ from .views import CourseViewSet, VideoViewSet
 # ]
 
 router = DefaultRouter()
-router.register('Course', CourseViewSet)
-router.register('Video', VideoViewSet)
+router.register('course', CourseViewSet)
+router.register('video', VideoViewSet)
 
 urlpatterns = router.urls
