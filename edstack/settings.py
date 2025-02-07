@@ -79,7 +79,7 @@ SIMPLE_JWT = {
 }
 
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000',  # React dev server
+    'http://localhost:5173',  # React dev server
     'https://edstack.xyz',  # React production domain
 ]
 
