@@ -24,14 +24,14 @@ from tutorials.views import SignupView, LoginView, SecureView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/tutorials/', include('tutorials.urls')),
-    path('api/tutormarketplace/', include('tutormarketplace.urls')),
+    path('tutorials/', include('tutorials.urls')),
+    path('tutormarketplace/', include('tutormarketplace.urls')),
 ]
 
 urlpatterns += [
-    path('api/auth/signup/', SignupView.as_view(), name='signup'),
-    path('api/auth/login/', LoginView.as_view(), name='login'),
-    path('api/auth/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    path('api/auth/logout/', TokenBlacklistView.as_view(), name='token_blacklist'),
-    path('api/auth/secureview/', SecureView.as_view(), name='secure_view')   
+    path('auth/signup/', SignupView.as_view(), name='signup'),
+    path('auth/login/', LoginView.as_view(), name='login'),
+    path('auth/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('auth/logout/', TokenBlacklistView.as_view(), name='token_blacklist'),
+    path('auth/secureview/', SecureView.as_view(), name='secure_view')   
 ]

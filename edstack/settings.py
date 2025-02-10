@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-k-w8g48)cam9*su6f8iet+wp-30(n02e#s29_39!@bc(tifc()
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['api.edstack.xyz']
 
 
 # Application definition
@@ -80,9 +80,8 @@ SIMPLE_JWT = {
     'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
 }
 
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:5173',  # React dev server
-    'https://edstack.xyz',  # React production domain
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    r"^https://\w+\.edstack\.xyz$",  # React production domain
 ]
 
 ROOT_URLCONF = 'edstack.urls'
