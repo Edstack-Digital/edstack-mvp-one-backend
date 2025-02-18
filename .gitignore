@@ -10,10 +10,10 @@ __pycache__/
 Thumbs.db
 
 # Virtual Environment
-venv/
+# venv/
 .env
-*.venv
-venv
+# *.venv
+# venv
 
 # Django specific
 *.log
