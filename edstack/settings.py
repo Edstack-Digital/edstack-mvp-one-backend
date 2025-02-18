@@ -12,29 +12,24 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 from datetime import timedelta
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-k-w8g48)cam9*su6f8iet+wp-30(n02e#s29_39!@bc(tifc()'
-
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+
+SECRET_KEY = os.getenv('SECRET_KEY')
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(',')
+CORS_ALLOWED_ORIGINS = os.getenv('CORS_ALLOWED_ORIGINS').split(',')
+CSRF_TRUSTED_ORIGINS = os.getenv('CSRF_TRUSTED_ORIGINS').split(',')
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOW_HEADERS = ['*']
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173","https://cors-test.codehappy.dev", "https://edstack.xyz"
-]
-CSRF_TRUSTED_ORIGINS = [
-    "http://localhost:5173","https://cors-test.codehappy.dev", "https://edstack.xyz"
-]
-ALLOWED_HOSTS = ['api.edstack.xyz', '127.0.0.1', '69fe-102-89-46-216.ngrok-free.app', 'localhost']
 
 # Application definition
 
