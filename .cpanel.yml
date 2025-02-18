@@ -1,0 +1,17 @@
+---
+deployment:
+  tasks:
+    # Navigate to the project directory
+    - cd /home/edstdvgy/public_html/edstack-mvp-one-backend
+
+    # Activate virtual environment
+    - /bin/bash -c 'source /home/edstdvgy/public_html/edstack-mvp-one-backend/venv/bin/activate'
+
+    # Pull latest changes from GitHub
+    - /usr/bin/git pull origin main  # Change 'main' if needed
+
+    # Install/update dependencies
+    - /home/edstdvgy/public_html/edstack-mvp-one-backend/venv/bin/pip install -r /home/edstdvgy/public_html/edstack-mvp-one-backend/requirements.txt
+
+    # Restart the application (Passenger-based apps)
+    - /bin/touch /home/edstdvgy/public_html/edstack-mvp-one-backend/tmp/restart.txt
