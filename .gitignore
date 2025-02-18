@@ -24,6 +24,9 @@ venv
 /staticfiles/
 /static/
 
+venv
+venv/
+
 # Environment Variables
 .env
 config/settings/local.py
@@ -71,3 +74,5 @@ Pipfile.lock
 
 # Local development overrides
 *.local
+
+db.sqlite3
