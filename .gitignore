@@ -1,0 +1,73 @@
+ # General
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.swp
+*.swo
+*.swn
+.DS_Store
+Thumbs.db
+
+# Virtual Environment
+venv/
+.env
+*.venv
+venv
+
+# Django specific
+*.log
+*.pot
+*.mo
+*.sqlite3
+/media/
+/staticfiles/
+/static/
+
+# Environment Variables
+.env
+config/settings/local.py
+config/settings/*.local.py
+
+# Database
+*.sqlite3
+/db.sqlite3
+
+# Migrations
+*/migrations/__pycache__/
+*/migrations/*.pyc
+
+__pycache__
+
+# VS Code
+.vscode/
+
+# PyCharm
+.idea/
+*.iml
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# Celery
+celerybeat-schedule
+
+# Coverage reports
+.coverage
+htmlcov/
+
+# Docker
+*.pid
+docker-compose.override.yml
+
+# Pipenv
+Pipfile.lock
+
+# Pytest
+.cache/
+
+# MyPy
+.mypy_cache/
+
+# Local development overrides
+*.local
