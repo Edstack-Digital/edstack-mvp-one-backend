@@ -29,7 +29,7 @@ DEBUG = True
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOW_HEADERS = ['*']
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173","https://cors-test.codehappy.dev", "https://edstack,xyz"
+    "http://localhost:5173","https://cors-test.codehappy.dev", "https://edstack.xyz"
 ]
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:5173","https://cors-test.codehappy.dev"
