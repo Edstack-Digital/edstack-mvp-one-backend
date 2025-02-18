@@ -32,7 +32,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173","https://cors-test.codehappy.dev", "https://edstack.xyz"
 ]
 CSRF_TRUSTED_ORIGINS = [
-    "http://localhost:5173","https://cors-test.codehappy.dev"
+    "http://localhost:5173","https://cors-test.codehappy.dev", "https://edstack.xyz"
 ]
 ALLOWED_HOSTS = ['api.edstack.xyz', '127.0.0.1', '69fe-102-89-46-216.ngrok-free.app', 'localhost']
 
