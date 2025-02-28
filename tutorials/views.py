@@ -9,7 +9,7 @@ from rest_framework.viewsets import ModelViewSet
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.tokens import RefreshToken
-
+from rest_framework.pagination import PageNumberPagination 
 from .models import Course, Video
 from .serializers import UserSerializer, CourseSerializer, VideoSerializer
 
@@ -26,6 +26,23 @@ from .serializers import UserSerializer, CourseSerializer, VideoSerializer
 
 #     messages.success(request, "The action was performed successfully.")
 
+
+class VideoPagination(PageNumberPagination):
+    page_size = 10  
+    page_size_query_param = 'page_size'  
+    max_page_size = 50 
+
+    def get_paginated_response(self, data):
+        return Response({
+            'links': {
+                'next': self.get_next_link(),
+                'previous': self.get_previous_link()
+            },
+            'count': self.page.paginator.count,
+            'num_pages': self.page.paginator.num_pages,
+            'num_items_in_page': self.page_size,
+            'results': data
+        })
 
 # Create your views here.
 class SecureView(APIView):
@@ -54,6 +71,8 @@ class SecureView(APIView):
 #             return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
 User = get_user_model()
+
+
 class SignupView(APIView):
     permission_classes = [AllowAny]
 
@@ -95,3 +114,5 @@ class VideoViewSet(ModelViewSet):
     queryset = Video.objects.all()
     serializer_class = VideoSerializer
     permission_classes = [AllowAny]
+    pagination_class = VideoPagination
+
