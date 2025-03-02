@@ -12,6 +12,7 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.pagination import PageNumberPagination 
 from .models import Course, Video
 from .serializers import UserSerializer, CourseSerializer, VideoSerializer
+User = get_user_model()
 
 # from django.views.decorators.http import require_POST
 # from django.contrib import messages
@@ -50,6 +51,23 @@ class SecureView(APIView):
 
     def get(self, request):
         return Response({"message": "You are authenticated!"})
+class UpdateProfileView(APIView):
+    # permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        user = request.user
+        data = request.data
+
+        user.email = data.get('email', user.email)
+        user.phone = data.get('phone', user.phone)
+        user.university = data.get('university', user.university)
+        user.matric = data.get('matric', user.matric)
+        user.level = data.get('level', user.level)
+
+        user.save()
+
+        return Response({"message": "Profile updated successfully.", "user": UserSerializer(user).data})
+    
 
 
 # class SignupView(APIView):
@@ -70,7 +88,7 @@ class SecureView(APIView):
 #         except Exception as e:
 #             return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
-User = get_user_model()
+
 
 
 class SignupView(APIView):

@@ -20,7 +20,7 @@ from rest_framework_simplejwt.views import (
     TokenRefreshView,
     TokenBlacklistView,
 )
-from tutorials.views import SignupView, LoginView, SecureView
+from tutorials.views import SignupView, LoginView, SecureView, UpdateProfileView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -33,5 +33,6 @@ urlpatterns += [
     path('auth/login/', LoginView.as_view(), name='login'),
     path('auth/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('auth/logout/', TokenBlacklistView.as_view(), name='token_blacklist'),
-    path('auth/secureview/', SecureView.as_view(), name='secure_view')   
+    path('auth/secureview/', SecureView.as_view(), name='secure_view'),   
+    path('auth/update-profile/', UpdateProfileView.as_view(), name='update_profile'),
 ]
